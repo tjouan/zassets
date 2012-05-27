@@ -1,0 +1,6 @@
+#!/usr/bin/env ruby
+
+require 'zassets'
+
+cli = ZAssets::CLI.new ARGV
+cli.run
