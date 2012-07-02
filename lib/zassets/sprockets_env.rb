@@ -1,12 +1,18 @@
 require 'sprockets'
 require 'sprockets-helpers'
 
+module Sprockets
+  autoload :LessTemplate, 'sprockets/less_template'
+end
+
 module ZAssets
   class SprocketsEnv < Sprockets::Environment
     def initialize(config)
       super '.'
 
       self.logger.level = Logger::DEBUG if config[:verbose]
+
+      self.register_engine '.less', ::Sprockets::LessTemplate
 
       config[:paths].each { |p| append_path p }
 
