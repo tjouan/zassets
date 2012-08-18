@@ -39,7 +39,7 @@ module ZAssets
         end
 
         map '/' do
-          run Rack::File.new 'docroot'
+          run Rack::File.new config[:public_path]
         end
       end
     end
