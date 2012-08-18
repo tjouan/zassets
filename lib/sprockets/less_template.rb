@@ -1,4 +1,5 @@
 require 'tilt'
+require 'less'
 
 module Sprockets
   class LessTemplate < Tilt::Template
