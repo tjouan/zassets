@@ -7,12 +7,15 @@ module ZAssets
     end
 
     def run
-      handler = Rack::Handler.default
       handler.run app, options do |server|
         [:INT, :TERM].each do |sig|
           trap(sig) { server.respond_to?(:stop!) ? server.stop! : server.stop }
         end
       end
+    end
+
+    def handler
+      Rack::Handler.get(@config[:server]) || Rack::Handler.default
     end
 
     def options

@@ -27,6 +27,10 @@ module ZAssets
           options[:port] = p
         end
 
+        o.on '-s', '--server SERVER', 'Use SERVER as Rack handler' do |s|
+          options[:server] = s
+        end
+
         o.on '-h', '--help', 'Show this message' do
           puts o
           exit
