@@ -51,9 +51,9 @@ module ZAssets
       end
 
       if args.last && args.last == 'serve'
-        options[:command] = :serve
+        options[:action] = :serve
       elsif ! args.last
-        options[:command] = :compile
+        options[:action] = :compile
       else
         puts parser
         exit 64
@@ -67,7 +67,7 @@ module ZAssets
     end
 
     def run
-      case config[:command]
+      case config[:action]
       when :serve
         server.run
       when :compile
