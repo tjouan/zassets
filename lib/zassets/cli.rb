@@ -50,10 +50,8 @@ module ZAssets
         exit 64
       end
 
-      if args.last && args.last == 'serve'
-        options[:action] = :serve
-      elsif ! args.last
-        options[:action] = :compile
+      if args.last && %w(compile serve).include?(args.last)
+        options[:action] = args.last.to_sym
       else
         puts parser
         exit 64
