@@ -19,8 +19,6 @@ Gem::Specification.new do |s|
   s.add_dependency 'sprockets',         '~> 2.4'
   s.add_dependency 'sprockets-helpers', '~> 0.4'
 
-  s.add_dependency 'rake',              '~> 0.9.2.2'
-
   s.add_dependency 'puma',              '~> 1.6'
 
   s.add_dependency 'therubyracer',      '~> 0.10'
