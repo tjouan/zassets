@@ -14,6 +14,7 @@ module ZAssets
         :verbose      => false,
         :host         => '::1',
         :port         => 9292,
+        :server       => :puma,
         :base_url     => '/assets',
         :paths        => [],
         :public_path  => 'public/assets',
