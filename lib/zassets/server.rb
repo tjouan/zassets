@@ -27,16 +27,15 @@ module ZAssets
     end
 
     def app
-      sprockets_mount_point = @config[:base_url]
-      sprockets_env         = SprocketsEnv.new(@config)
+      config = @config
 
       @app ||= Rack::Builder.new do
         use Rack::CommonLogger
         use Rack::ShowExceptions
         use Rack::Lint
 
-        map sprockets_mount_point do
-          run sprockets_env
+        map config[:base_url] do
+          run SprocketsEnv.new(config)
         end
 
         map '/' do
