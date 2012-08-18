@@ -21,10 +21,6 @@ Gem::Specification.new do |s|
 
   s.add_dependency 'rake',              '~> 0.9.2.2'
 
-  #s.add_dependency 'thin',              '~> 1.3'
-  #s.add_dependency 'eventmachine',      '~> 1.0.0.beta.4'
-  #s.add_dependency 'puma',              '~> 1.4'
-
   s.add_dependency 'therubyracer',      '~> 0.10'
   s.add_dependency 'coffee-script',     '~> 2.2'
   s.add_dependency 'less',              '~> 2.2'
