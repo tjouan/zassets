@@ -24,7 +24,8 @@ Create a `config/zassets.yaml` file in your app:
     base_url: '/assets'
     paths:
       - 'assets/styles'
-    public_path: 'public/assets'
+    public_path: 'public'
+    compile_path: 'public/assets'
     compile:
       - 'main.css'
 

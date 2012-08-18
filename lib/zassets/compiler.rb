@@ -15,7 +15,7 @@ module ZAssets
     end
 
     def manifest
-      @manifest ||= Sprockets::Manifest.new(environment, @config[:public_path])
+      @manifest ||= Sprockets::Manifest.new(environment, @config[:compile_path])
     end
 
     def environment

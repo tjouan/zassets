@@ -17,7 +17,8 @@ module ZAssets
         :server       => :puma,
         :base_url     => '/assets',
         :paths        => [],
-        :public_path  => 'public/assets',
+        :public_path  => 'public',
+        :compile_path => 'public/assets',
         :compile      => []
       }
     end
