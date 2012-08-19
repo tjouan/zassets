@@ -1,3 +1,5 @@
+require 'coffee_script'
+
 module ZAssets
   autoload :CLI,          'zassets/cli'
   autoload :Compiler,     'zassets/compiler'
