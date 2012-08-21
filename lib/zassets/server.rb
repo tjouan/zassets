@@ -29,7 +29,7 @@ module ZAssets
     def app
       config = @config
 
-      @app ||= Rack::Builder.new do
+      @app ||= Rack::Builder.app do
         use Rack::CommonLogger
         use Rack::ShowExceptions
         use Rack::Lint
