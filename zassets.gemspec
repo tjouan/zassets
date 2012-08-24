@@ -21,7 +21,7 @@ Gem::Specification.new do |s|
 
   s.add_dependency 'puma',              '~> 1.6'
 
-  s.add_dependency 'therubyracer',      '~> 0.10'
+  s.add_dependency 'therubyracer',      '~> 0.11.0beta8'
   s.add_dependency 'coffee-script',     '~> 2.2'
   s.add_dependency 'less',              '~> 2.2'
 end
