@@ -16,6 +16,10 @@ module ZAssets
 
       config[:paths].each { |p| append_path p }
 
+      require 'handlebars_assets'
+      append_path HandlebarsAssets.path
+      self.register_engine '.hbs', ::HandlebarsAssets::TiltHandlebars
+
       Sprockets::Helpers.configure do |c|
         c.environment = self
         c.prefix      = config[:base_url]
