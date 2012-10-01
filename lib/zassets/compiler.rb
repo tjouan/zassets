@@ -7,11 +7,7 @@ module ZAssets
     end
 
     def compile
-      if @config[:compile]
-        manifest.compile(@config[:compile])
-      else
-        manifest.compile
-      end
+      manifest.compile(@config[:compile])
     end
 
     def manifest
