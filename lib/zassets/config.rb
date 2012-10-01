@@ -2,7 +2,7 @@ require 'yaml'
 
 module ZAssets
   class Config
-    def initialize(options)
+    def initialize(options = {})
       o = defaults_options
       o.merge! load_options(options[:config_file]) if options[:config_file]
       o.merge! options
