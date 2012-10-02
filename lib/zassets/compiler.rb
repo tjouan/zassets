@@ -2,6 +2,8 @@ require 'sprockets'
 
 module ZAssets
   class Compiler
+    attr_writer :manifest
+
     def initialize(config)
       @config = config
     end
