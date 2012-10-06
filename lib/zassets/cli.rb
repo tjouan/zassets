@@ -2,6 +2,8 @@ require 'optparse'
 
 module ZAssets
   class CLI
+    attr_reader :options
+
     def initialize(args)
       @options = args_parse! args
     end
