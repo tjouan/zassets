@@ -4,7 +4,8 @@ module ZAssets
   class CLI
     attr_reader :options
 
-    def initialize(args)
+    def initialize(args, stdout = $stdout)
+      @stdout = stdout
       @options = args_parse! args
     end
 
@@ -34,12 +35,12 @@ module ZAssets
         end
 
         o.on '-h', '--help', 'Show this message' do
-          puts o
+          @stdout.puts o
           exit
         end
 
         o.on '-V', '--version', 'Show version' do
-          puts VERSION
+          @stdout.puts VERSION
           exit
         end
       end
@@ -48,14 +49,14 @@ module ZAssets
         parser.parse! args
       rescue OptionParser::InvalidOption => e
         warn e.message
-        puts parser
+        @stdout.puts parser
         exit 64
       end
 
       if args.last && %w(compile serve).include?(args.last)
         options[:action] = args.last.to_sym
       else
-        puts parser
+        @stdout.puts parser
         exit 64
       end
 
