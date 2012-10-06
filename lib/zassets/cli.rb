@@ -9,7 +9,7 @@ module ZAssets
     def args_parse!(args)
       options = {}
       parser = OptionParser.new do |o|
-        o.banner = "Usage: #{File.basename $0} [options] [compile|serve]"
+        o.banner = "Usage: #{File.basename $0} [options] compile|serve"
 
         o.on '-v', '--verbose', 'Enable verbose mode' do |v|
           options[:verbose] = v
