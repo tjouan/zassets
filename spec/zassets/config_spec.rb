@@ -9,25 +9,14 @@ module ZAssets
     let(:config_file) { fixture_path_for 'config/zassets.yaml' }
 
     describe '#initialize' do
-      context 'with an empty option hash' do
-        it 'assigns #default_options to @options' do
-          config.instance_eval { @options }.should == config.default_options
-        end
+      it 'assigns #default_options to @options' do
+        config.instance_eval { @options }.should == config.default_options
       end
 
       context 'with a non-empty option hash' do
-        subject(:config) { Config.new(some_option: :some_value)}
-
         it 'merges the option hash' do
-          config[:some_option].should == :some_value
-        end
-
-        it 'merges the option hash after default options' do
-          Config.any_instance.stub(:default_options) {
-            { some_option: :default_value }
-          }
-          config = Config.new(some_option: :argument_value)
-          config[:some_option].should == :argument_value
+          config = Config.new(verbose: true)
+          config[:verbose].should == true
         end
       end
 
