@@ -57,15 +57,3 @@ Installation
   Assuming you have a working rubygems installation:
 
     gem install zassets
-
-
-Similar projects
-----------------
-
-  FIXME
-
-
-TODO
-----
-
-  * Replace compile argument (config?) with build?
