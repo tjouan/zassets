@@ -3,13 +3,13 @@ require 'yaml'
 module ZAssets
   class Config
     def initialize(options = {})
-      o = defaults_options
+      o = default_options
       o.merge! load_options(options[:config_file]) if options[:config_file]
       o.merge! options
       @options = o
     end
 
-    def defaults_options
+    def default_options
       {
         :verbose      => false,
         :host         => '::1',

@@ -10,8 +10,8 @@ module ZAssets
 
     describe '#initialize' do
       context 'with an empty option hash' do
-        it 'assigns #defaults_options to @options' do
-          config.instance_eval { @options }.should == config.defaults_options
+        it 'assigns #default_options to @options' do
+          config.instance_eval { @options }.should == config.default_options
         end
       end
 
@@ -23,7 +23,7 @@ module ZAssets
         end
 
         it 'merges the option hash after default options' do
-          Config.any_instance.stub(:defaults_options) {
+          Config.any_instance.stub(:default_options) {
             { some_option: :default_value }
           }
           config = Config.new(some_option: :argument_value)
@@ -45,41 +45,41 @@ module ZAssets
       end
     end
 
-    describe '#defaults_options' do
+    describe '#default_options' do
       it 'sets verbose to false' do
-        config.defaults_options[:verbose].should be_false
+        config.default_options[:verbose].should be_false
       end
 
       it 'sets host to ::1' do
-        config.defaults_options[:host].should == '::1'
+        config.default_options[:host].should == '::1'
       end
 
       it 'sets port to 9292' do
-        config.defaults_options[:port].should == 9292
+        config.default_options[:port].should == 9292
       end
 
       it 'sets server to puma' do
-        config.defaults_options[:server].should == :puma
+        config.default_options[:server].should == :puma
       end
 
       it 'sets base_url to /assets' do
-        config.defaults_options[:base_url].should == '/assets'
+        config.default_options[:base_url].should == '/assets'
       end
 
       it 'sets paths empty' do
-        config.defaults_options[:paths].should == []
+        config.default_options[:paths].should == []
       end
 
       it 'sets public_path to public directory' do
-        config.defaults_options[:public_path].should == 'public'
+        config.default_options[:public_path].should == 'public'
       end
 
       it 'sets compile_path to public/assets directory' do
-        config.defaults_options[:compile_path].should == 'public/assets'
+        config.default_options[:compile_path].should == 'public/assets'
       end
 
       it 'sets compile empty' do
-        config.defaults_options[:compile].should == []
+        config.default_options[:compile].should == []
       end
     end
 
