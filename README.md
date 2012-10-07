@@ -68,8 +68,6 @@ Similar projects
 TODO
 ----
 
-  * *Test* all that code!
-
   * Replace compile argument (config?) with build?
 
   * Verify how sprockets-helpers is useful and either add usages
