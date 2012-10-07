@@ -6,7 +6,7 @@ Gem::Specification.new do |s|
   s.version     = ZAssets::VERSION
   s.summary     = "zassets-#{ZAssets::VERSION}"
   s.description = <<-eoh.gsub(/^ +/, '')
-    Standalone asset manager based on sprockets.
+    Standalone asset pipeline based on sprockets.
   eoh
   s.homepage    = 'https://rubygems.org/gems/zassets'
 
