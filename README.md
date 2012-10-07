@@ -1,5 +1,5 @@
-z'assets
-========
+z'assets - standalone asset pipeline
+====================================
 
   z'assets is a tool based on [Sprockets][] for serving and compiling
 web assets. When serving over HTTP (intended for a development
