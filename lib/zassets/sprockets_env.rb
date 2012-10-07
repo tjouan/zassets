@@ -1,5 +1,4 @@
 require 'sprockets'
-require 'sprockets-helpers'
 
 module Sprockets
   autoload :LessTemplate, 'sprockets/less_template'
@@ -19,13 +18,6 @@ module ZAssets
       require 'handlebars_assets'
       append_path HandlebarsAssets.path
       self.register_engine '.hbs', ::HandlebarsAssets::TiltHandlebars
-
-      Sprockets::Helpers.configure do |c|
-        c.environment = self
-        c.prefix      = config[:base_url]
-        c.digest      = true
-        c.public_path = config[:public_path]
-      end
     end
   end
 end

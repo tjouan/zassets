@@ -69,6 +69,3 @@ TODO
 ----
 
   * Replace compile argument (config?) with build?
-
-  * Verify how sprockets-helpers is useful and either add usages
-    in documentation or remove it.
