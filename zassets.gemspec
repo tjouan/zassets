@@ -17,7 +17,6 @@ Gem::Specification.new do |s|
   s.executables = s.files.grep(/\Abin\//).map { |f| File.basename(f) }
 
   s.add_dependency 'sprockets',         '~> 2.4'
-  s.add_dependency 'sprockets-helpers', '~> 0.4'
 
   s.add_dependency 'puma',              '~> 1.6'
 
