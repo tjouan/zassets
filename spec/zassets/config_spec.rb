@@ -13,6 +13,11 @@ module ZAssets
         config.instance_eval { @options }.should == config.default_options
       end
 
+      it 'registers plugins' do
+        Config.any_instance.should_receive :register_plugins!
+        Config.new
+      end
+
       context 'with a non-empty option hash' do
         it 'merges the option hash' do
           config = Config.new(verbose: true)
@@ -77,6 +82,20 @@ module ZAssets
         config.load_options(config_file).should == {
           file_option: :file_value
         }
+      end
+    end
+
+    describe '#register_plugins!' do
+      subject(:config) { Config.new(plugins: ['dummy']) }
+
+      it 'loads plugins' do
+        config
+        Plugins::Dummy.should be
+      end
+
+      it 'registers them with current config' do
+        config[:dummy_plugin].should == :registered
+        config = Config.new(plugins: ['dummy'])
       end
     end
 
