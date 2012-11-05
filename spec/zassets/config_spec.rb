@@ -96,6 +96,11 @@ module ZAssets
         config.instance_eval { @options[:foo] = :bar }
         config[:foo].should == :bar
       end
+
+      it 'stores a value under given key' do
+        config[:foo] = :bar
+        config[:foo].should == :bar
+      end
     end
   end
 end
