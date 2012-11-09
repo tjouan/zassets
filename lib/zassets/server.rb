@@ -39,7 +39,12 @@ module ZAssets
         end
 
         map '/' do
-          run Rack::File.new config[:public_path]
+          if config[:public_file]
+            file = File.new(File.join(config[:public_path], config[:public_file]))
+            run MemoryFile.new file
+          else
+            run Rack::File.new config[:public_path]
+          end
         end
       end
     end

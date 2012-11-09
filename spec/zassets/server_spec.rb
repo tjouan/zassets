@@ -86,6 +86,19 @@ module ZAssets
               response.body.should == "hello!\n"
             end
           end
+
+          context 'when a public file is configured' do
+            let(:config) { Config.new(public_file: 'index.html') }
+
+            it 'serves the public file' do
+              within_fixture_path do
+                response = app.get('/')
+                response.should be_ok
+                response.content_type.should == 'text/html'
+                response.body.should == "hello HTML!\n"
+              end
+            end
+          end
         end
       end
     end
