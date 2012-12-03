@@ -1,3 +1,4 @@
+require 'zassets/version'
 require 'coffee_script'
 
 module ZAssets
@@ -7,5 +8,4 @@ module ZAssets
   autoload :MemoryFile,   'zassets/memory_file'
   autoload :Server,       'zassets/server'
   autoload :SprocketsEnv, 'zassets/sprockets_env'
-  autoload :Version,      'zassets/version'
 end
