@@ -16,7 +16,7 @@ Gem::Specification.new do |s|
   s.files       = `git ls-files`.split "\n"
   s.executables = s.files.grep(/\Abin\//).map { |f| File.basename(f) }
 
-  s.add_dependency 'sprockets',         '2.6'
+  s.add_dependency 'sprockets',         '2.8.1'
 
   s.add_dependency 'puma',              '~> 1.6'
 
