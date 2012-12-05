@@ -22,7 +22,7 @@ module ZAssets
         compiler.manifest
       end
 
-      it 'returns the sprockets manifest'do
+      it 'returns the sprockets manifest' do
         manifest = double('manifest')
         Sprockets::Manifest.stub(:new) { manifest }
         compiler.manifest.should == manifest
