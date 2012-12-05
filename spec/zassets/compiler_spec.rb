@@ -17,7 +17,7 @@ module ZAssets
       it 'builds a sprockets manifest' do
         Sprockets::Manifest.should_receive(:new).with(
           compiler.environment,
-          config[:compile_path]
+          compiler.manifest_path
         )
         compiler.manifest
       end
@@ -26,6 +26,15 @@ module ZAssets
         manifest = double('manifest')
         Sprockets::Manifest.stub(:new) { manifest }
         compiler.manifest.should == manifest
+      end
+    end
+
+    describe '#manifest_path' do
+      it 'returns the manifest file path' do
+        compiler.manifest_path.should == File.join(
+          config[:compile_path],
+          'manifest.json'
+        )
       end
     end
 
