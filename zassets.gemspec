@@ -20,10 +20,10 @@ Gem::Specification.new do |s|
 
   s.add_dependency 'puma',              '~> 1.6'
 
-  s.add_dependency 'therubyracer',      '~> 0.11.0beta8'
-  s.add_dependency 'libv8',             '~> 3.3.10.4'
+  s.add_dependency 'therubyracer',      '~> 0.11'
+  s.add_dependency 'libv8',             '~> 3.3'
   s.add_dependency 'coffee-script',     '2.2.0'
-  s.add_dependency 'less',              '~> 2.2'
+  s.add_dependency 'less',              '~> 2.3'
   s.add_dependency 'handlebars_assets', '0.6.6'
 
   s.add_development_dependency 'rspec', '~> 2.11'
