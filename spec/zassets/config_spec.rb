@@ -4,9 +4,8 @@ module ZAssets
   describe Config do
     include FixturesHelpers
 
-    subject(:config)
-
     let(:config_file) { fixture_path_for 'config/zassets.yaml' }
+    subject(:config)  { Config.new }
 
     describe '#initialize' do
       it 'assigns #default_options to @options' do
