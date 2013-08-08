@@ -5,7 +5,7 @@ module ZAssets
     def initialize(config)
       super '.'
 
-      self.logger.level = Logger::DEBUG if config[:verbose]
+      logger.level = Logger::DEBUG if config[:verbose]
 
       config[:engines].each { |ext, engine| register_engine ext, engine }
 
