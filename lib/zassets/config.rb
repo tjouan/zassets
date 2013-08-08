@@ -61,7 +61,7 @@ module ZAssets
         require "zassets-plugins-#{plugin}"
       end
 
-      return ::ZAssets.const_defined? :Plugins
+      ::ZAssets.const_defined? :Plugins
     end
   end
 end
