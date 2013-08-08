@@ -1,4 +1,5 @@
-$:.unshift File.expand_path('../lib', __FILE__)
+lib = File.expand_path('../lib', __FILE__)
+$LOAD_PATH << lib unless $LOAD_PATH.include? lib
 require 'zassets/version'
 
 Gem::Specification.new do |s|
@@ -13,8 +14,9 @@ Gem::Specification.new do |s|
   s.author      = 'Thibault Jouan'
   s.email       = 'tj@a13.fr'
 
-  s.files       = `git ls-files`.split "\n"
-  s.executables = s.files.grep(/\Abin\//).map { |f| File.basename(f) }
+  s.files       = `git ls-files`.split $/
+  s.test_files  = s.files.grep /\Aspec\//
+  s.executables = s.files.grep(/\Abin\//) { |f| File.basename(f) }
 
   s.add_dependency 'sprockets',         '2.8.1'
 
