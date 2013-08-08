@@ -20,9 +20,9 @@ module ZAssets
 
     def options
       @options ||= {
-        :environment  => :development,
-        :Host         => @config[:host],
-        :Port         => @config[:port]
+        environment:  :development,
+        Host:         @config[:host],
+        Port:         @config[:port]
       }
     end
 
