@@ -18,13 +18,11 @@ Gem::Specification.new do |s|
   s.test_files  = s.files.grep /\Aspec\//
   s.executables = s.files.grep(/\Abin\//) { |f| File.basename(f) }
 
-  s.add_dependency 'sprockets',         '2.8.1'
-
-  s.add_dependency 'puma',              '~> 1.6'
-
-  s.add_dependency 'therubyracer',      '~> 0.11'
-  s.add_dependency 'libv8',             '~> 3.3'
-  s.add_dependency 'coffee-script',     '2.2.0'
+  s.add_dependency 'sprockets',     '2.8.1'
+  s.add_dependency 'puma',          '~> 1.6'
+  s.add_dependency 'sass',          '~> 3.2.10'
+  s.add_dependency 'execjs',        '~> 1.4.0'
+  s.add_dependency 'coffee-script', '~> 2.2.0'
 
   s.add_development_dependency 'rspec', '~> 2.11'
 end
