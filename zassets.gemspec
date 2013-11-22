@@ -27,5 +27,6 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'rspec',     '~> 2.14.1'
   s.add_development_dependency 'cucumber',  '~> 1.3.10'
   s.add_development_dependency 'aruba',     '~> 0.5.3'
+  s.add_development_dependency 'httparty',  '~> 0.12.0'
   s.add_development_dependency 'rake'
 end
