@@ -1,6 +1,4 @@
 class Server
-  include Aruba::Api
-
   DEFAULT_COMMAND = 'zassets serve'
   DEFAULT_HOST    = 'localhost'
   DEFAULT_PORT    = 9292
@@ -45,14 +43,14 @@ class Server
   end
 
   def start
-      @pid = fork do
-        $stdout.reopen @w_out
-        $stderr.reopen @w_err
+    @pid = fork do
+      $stdout.reopen @w_out
+      $stderr.reopen @w_err
 
-        exec DEFAULT_COMMAND
-      end
+      exec DEFAULT_COMMAND
+    end
 
-      wait_ready
+    wait_ready
   end
 
   def wait_ready
