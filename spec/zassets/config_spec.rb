@@ -77,10 +77,35 @@ module ZAssets
     end
 
     describe '#load_options' do
-      it 'loads symbolized options from YAML file' do
-        config.load_options(config_file).should == {
-          file_option: :file_value
-        }
+      context 'when path is given as argument' do
+        it 'loads symbolized options from YAML file' do
+          config.load_options(config_file).should == {
+            file_option: :file_value
+          }
+        end
+      end
+
+      context 'without argument' do
+        it 'loads the default config file path' do
+          expect { config.load_options }
+            .to raise_error /.*no such.+config\/zassets.yaml/i
+        end
+      end
+    end
+
+    describe '#default_config_file?' do
+      context 'when file does not exist' do
+        it 'returns false' do
+          config.default_config_file?.should be_false
+        end
+      end
+
+      context 'when file exists' do
+        it 'returns true' do
+          within_fixture_path do
+            config.default_config_file?.should be_true
+          end
+        end
       end
     end
 

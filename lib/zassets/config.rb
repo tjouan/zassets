@@ -2,6 +2,8 @@ require 'yaml'
 
 module ZAssets
   class Config
+    DEFAULT_CONFIG_PATH = 'config/zassets.yaml'
+
     DEFAULT_OPTIONS = {
       verbose:      false,
       host:         '::1',
@@ -18,6 +20,7 @@ module ZAssets
 
     def initialize(options = {})
       o = default_options
+      o.merge! load_options if default_config_file?
       o.merge! load_options(options[:config_file]) if options[:config_file]
       o.merge! options
       @options = o
@@ -28,12 +31,16 @@ module ZAssets
       DEFAULT_OPTIONS.dup
     end
 
-    def load_options(filepath)
+    def load_options(filepath = DEFAULT_CONFIG_PATH)
       return {} unless options = YAML.load_file(filepath)
       options.keys.each do |key|
         options[(key.to_sym rescue key) || key] = options.delete(key)
       end
       options
+    end
+
+    def default_config_file?
+      File.exist? DEFAULT_CONFIG_PATH
     end
 
     def register_plugins!
