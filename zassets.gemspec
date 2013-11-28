@@ -21,7 +21,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'sprockets',     '~> 2.10.0'
   s.add_dependency 'puma',          '~> 2.4.1'
   s.add_dependency 'sass',          '~> 3.2.10'
-  s.add_dependency 'execjs',        '~> 1.4.0'
+  s.add_dependency 'execjs',        '~> 2.0.2'
   s.add_dependency 'coffee-script', '~> 2.2.0'
 
   s.add_development_dependency 'rspec',     '~> 2.14.1'
