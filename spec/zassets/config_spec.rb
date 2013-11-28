@@ -59,8 +59,8 @@ module ZAssets
         config.default_options[:base_url].should == '/assets'
       end
 
-      it 'sets paths empty' do
-        config.default_options[:paths].should == []
+      it 'sets paths to app directory' do
+        config.default_options[:paths].should == ['app']
       end
 
       it 'sets public_path to public directory' do

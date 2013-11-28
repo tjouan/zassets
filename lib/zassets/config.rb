@@ -12,7 +12,7 @@ module ZAssets
       plugins:      [],
       engines:      {},
       base_url:     '/assets',
-      paths:        [],
+      paths:        %w[app],
       public_path:  'public',
       build_path:   'public/assets',
       build:        []
