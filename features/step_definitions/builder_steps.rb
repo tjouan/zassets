@@ -33,3 +33,9 @@ Then /^the built file "([^"]*)" should match \/([^\/]*)\/$/ do |path, content|
     IO.read(Dir[path].first).should =~ regexp
   end
 end
+
+Then /^it should build$/ do
+  prep_for_fs_check do
+    File.exist?('public/assets/manifest.json').should be_true
+  end
+end

@@ -2,17 +2,44 @@ require 'optparse'
 
 module ZAssets
   class CLI
-    attr_reader :options
+    ACTIONS = %w(build serve)
+
+    attr_reader :options, :action
 
     def initialize(args, stdout = $stdout)
       @stdout = stdout
-      @options = args_parse! args
+      @action = :build
+      args_parse! args
     end
+
+    def config
+      @config ||= Config.new @options
+    end
+
+    def run
+      case @action
+      when :serve
+        server.run
+      when :build
+        builder.build
+      end
+    end
+
+    def builder
+      @builder ||= Builder.new config
+    end
+
+    def server
+      @server ||= Server.new config
+    end
+
+
+    private
 
     def args_parse!(args)
       options = {}
       parser = OptionParser.new do |o|
-        o.banner = "Usage: #{File.basename $0} [options] build|serve"
+        o.banner = "Usage: #{File.basename $0} [options] [build|serve]"
 
         o.on '-v', '--verbose', 'Enable verbose mode' do |v|
           options[:verbose] = v
@@ -53,35 +80,8 @@ module ZAssets
         exit 64
       end
 
-      if args.last && %w(build serve).include?(args.last)
-        options[:action] = args.last.to_sym
-      else
-        @stdout.puts parser
-        exit 64
-      end
-
-      options
-    end
-
-    def config
-      @config ||= Config.new @options
-    end
-
-    def run
-      case config[:action]
-      when :serve
-        server.run
-      when :build
-        builder.build
-      end
-    end
-
-    def builder
-      @builder ||= Builder.new config
-    end
-
-    def server
-      @server ||= Server.new config
+      @options  = options
+      @action   = args.last.to_sym if args.last && ACTIONS.include?(args.last)
     end
   end
 end
