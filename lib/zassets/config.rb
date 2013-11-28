@@ -14,8 +14,8 @@ module ZAssets
       base_url:     '/assets',
       paths:        [],
       public_path:  'public',
-      compile_path: 'public/assets',
-      compile:      []
+      build_path:   'public/assets',
+      build:        []
     }
 
     def initialize(options = {})

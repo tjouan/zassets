@@ -67,12 +67,12 @@ module ZAssets
         config.default_options[:public_path].should == 'public'
       end
 
-      it 'sets compile_path to public/assets directory' do
-        config.default_options[:compile_path].should == 'public/assets'
+      it 'sets build_path to public/assets directory' do
+        config.default_options[:build_path].should == 'public/assets'
       end
 
-      it 'sets compile empty' do
-        config.default_options[:compile].should == []
+      it 'sets build empty' do
+        config.default_options[:build].should == []
       end
     end
 

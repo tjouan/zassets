@@ -4,5 +4,5 @@ Feature: CLI usage
     When I successfully run `zassets -h`
     Then the output must contain:
       """
-      Usage: zassets [options] compile|serve
+      Usage: zassets [options] build|serve
       """

@@ -1,38 +1,38 @@
 require 'spec_helper'
 
 module ZAssets
-  describe Compiler do
-    let(:config)        { Config.new }
-    subject(:compiler)  { Compiler.new(config) }
+  describe Builder do
+    let(:config)      { Config.new }
+    subject(:builder) { Builder.new(config) }
 
-    describe '#compile' do
+    describe '#build' do
       it 'compiles the manifest' do
-        compiler.manifest = double('manifest')
-        compiler.manifest.should_receive :compile
-        compiler.compile
+        builder.manifest = double('manifest')
+        builder.manifest.should_receive :compile
+        builder.build
       end
     end
 
     describe '#manifest' do
       it 'builds a sprockets manifest' do
         Sprockets::Manifest.should_receive(:new).with(
-          compiler.environment,
-          compiler.manifest_path
+          builder.environment,
+          builder.manifest_path
         )
-        compiler.manifest
+        builder.manifest
       end
 
       it 'returns the sprockets manifest' do
         manifest = double('manifest')
         Sprockets::Manifest.stub(:new) { manifest }
-        compiler.manifest.should == manifest
+        builder.manifest.should == manifest
       end
     end
 
     describe '#manifest_path' do
       it 'returns the manifest file path' do
-        compiler.manifest_path.should == File.join(
-          config[:compile_path],
+        builder.manifest_path.should == File.join(
+          config[:build_path],
           'manifest.json'
         )
       end
@@ -41,13 +41,13 @@ module ZAssets
     describe '#environment' do
       it 'builds a sprockets env' do
         SprocketsEnv.should_receive(:new).with(config)
-        compiler.environment
+        builder.environment
       end
 
       it 'returns the sprockets env' do
         environment = double('environment')
         SprocketsEnv.stub(:new) { environment }
-        compiler.environment.should == environment
+        builder.environment.should == environment
       end
     end
   end

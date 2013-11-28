@@ -1,7 +1,7 @@
 require 'sprockets'
 
 module ZAssets
-  class Compiler
+  class Builder
     MANIFEST_FILENAME = 'manifest.json'
 
     attr_writer :manifest
@@ -10,8 +10,8 @@ module ZAssets
       @config = config
     end
 
-    def compile
-      manifest.compile(@config[:compile])
+    def build
+      manifest.compile(@config[:build])
     end
 
     def manifest
@@ -19,7 +19,7 @@ module ZAssets
     end
 
     def manifest_path
-      [@config[:compile_path], MANIFEST_FILENAME].join '/'
+      [@config[:build_path], MANIFEST_FILENAME].join '/'
     end
 
     def environment

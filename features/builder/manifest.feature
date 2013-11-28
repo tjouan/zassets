@@ -5,7 +5,7 @@ Feature: Manifest
       """
       paths:
         - app
-      compile:
+      build:
         - app.js
       """
     And an empty file named "app/app.js"

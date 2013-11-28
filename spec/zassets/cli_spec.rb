@@ -100,28 +100,28 @@ module ZAssets
         end
       end
 
-      context 'compiler action' do
-        let(:args) { ['compile'] }
+      context 'build action' do
+        let(:args) { ['build'] }
 
-        it 'runs the compiler' do
-          compiler = double('compiler')
-          cli.stub(:compiler) { compiler }
-          compiler.should_receive :compile
+        it 'runs the builder' do
+          builder = double('builder')
+          cli.stub(:builder) { builder }
+          builder.should_receive :build
           cli.run
         end
       end
     end
 
-    describe '#compiler' do
-      it 'builds a compiler' do
-        Compiler.should_receive(:new).with(cli.config)
-        cli.compiler
+    describe '#builder' do
+      it 'builds a builder' do
+        Builder.should_receive(:new).with(cli.config)
+        cli.builder
       end
 
-      it 'returns the compiler' do
-        compiler = double('compiler')
-        Compiler.stub(:new) { compiler }
-        cli.compiler.should == compiler
+      it 'returns the builder' do
+        builder = double('builder')
+        Builder.stub(:new) { builder }
+        cli.builder.should == builder
       end
     end
 

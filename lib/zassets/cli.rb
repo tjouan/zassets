@@ -12,7 +12,7 @@ module ZAssets
     def args_parse!(args)
       options = {}
       parser = OptionParser.new do |o|
-        o.banner = "Usage: #{File.basename $0} [options] compile|serve"
+        o.banner = "Usage: #{File.basename $0} [options] build|serve"
 
         o.on '-v', '--verbose', 'Enable verbose mode' do |v|
           options[:verbose] = v
@@ -53,7 +53,7 @@ module ZAssets
         exit 64
       end
 
-      if args.last && %w(compile serve).include?(args.last)
+      if args.last && %w(build serve).include?(args.last)
         options[:action] = args.last.to_sym
       else
         @stdout.puts parser
@@ -71,13 +71,13 @@ module ZAssets
       case config[:action]
       when :serve
         server.run
-      when :compile
-        compiler.compile
+      when :build
+        builder.build
       end
     end
 
-    def compiler
-      @compiler ||= Compiler.new config
+    def builder
+      @builder ||= Builder.new config
     end
 
     def server

@@ -5,7 +5,7 @@ Feature: SASS transpiler
       """
       paths:
         - app
-      compile:
+      build:
         - styles/main.css
       """
     And a file named "app/styles/main.sass" with:

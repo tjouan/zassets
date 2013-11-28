@@ -4,7 +4,7 @@ end
 
 
 When /^I build$/  do
-  run_simple 'zassets compile'
+  run_simple 'zassets build'
 end
 
 

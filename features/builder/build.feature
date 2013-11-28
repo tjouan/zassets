@@ -5,7 +5,7 @@ Feature: Builder
       """
       paths:
         - app
-      compile:
+      build:
         - app.js
       """
     And a file named "app/app.js" with "some_content"

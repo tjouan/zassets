@@ -1,9 +1,9 @@
 z'assets - standalone asset pipeline
 ====================================
 
-  z'assets is a tool based on [Sprockets][] for serving and compiling
+  z'assets is a tool based on [Sprockets][] for serving and building
 web assets. When serving over HTTP (intended for a development
-environment), compilation through various preprocessors will happen on
+environment), transpilation through various preprocessors will happen on
 the fly. For production environment all specified assets are built as
 files in a directory tree similar to their sources, except filenames
 will include a hash to help caching.
@@ -33,8 +33,8 @@ directory:
       - 'assets/styles'
       - 'assets/scripts'
     public_path: 'public'
-    compile_path: 'public/assets'
-    compile:
+    build_path: 'public/assets'
+    build:
       - 'main.css'
 
   Then you can launch development HTTP server with the following
@@ -44,7 +44,7 @@ command:
 
   And build your assets:
 
-    zassets compile
+    zassets build
 
   You can override some config options using command line arguments,
 the complete list is printed on the standard output on

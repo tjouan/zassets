@@ -5,6 +5,6 @@ Feature: Config file loading
       """
       &* invalid yaml
       """
-    When I run `zassets compile`
+    When I run `zassets build`
     Then it must fail to parse the config
     And the output must contain "config/zassets.yaml"

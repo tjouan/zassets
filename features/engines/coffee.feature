@@ -5,7 +5,7 @@ Feature: CoffeeScript transpiler
       """
       paths:
         - app
-      compile:
+      build:
         - app.js
       """
     And a file named "app/app.coffee" with:

@@ -3,7 +3,7 @@ require 'coffee_script'
 
 module ZAssets
   autoload :CLI,          'zassets/cli'
-  autoload :Compiler,     'zassets/compiler'
+  autoload :Builder,      'zassets/builder'
   autoload :Config,       'zassets/config'
   autoload :MemoryFile,   'zassets/memory_file'
   autoload :Server,       'zassets/server'
