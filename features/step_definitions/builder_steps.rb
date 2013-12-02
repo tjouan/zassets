@@ -36,6 +36,6 @@ end
 
 Then /^it should build$/ do
   prep_for_fs_check do
-    File.exist?('public/assets/manifest.json').should be_true
+    File.exist?('public/assets/manifest.json').should be_truthy
   end
 end

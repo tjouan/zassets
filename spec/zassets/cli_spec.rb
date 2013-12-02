@@ -30,7 +30,7 @@ module ZAssets
         end
 
         it 'parses the -v option' do
-          with_option('-v').options[:verbose].should be_true
+          with_option('-v').options[:verbose].should be true
         end
 
         it 'parses the -c option' do

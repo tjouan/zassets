@@ -40,7 +40,7 @@ module ZAssets
 
     describe '#default_options' do
       it 'sets verbose to false' do
-        config.default_options[:verbose].should be_false
+        config.default_options[:verbose].should be false
       end
 
       it 'sets host to ::1' do
@@ -96,14 +96,14 @@ module ZAssets
     describe '#default_config_file?' do
       context 'when file does not exist' do
         it 'returns false' do
-          config.default_config_file?.should be_false
+          config.default_config_file?.should be false
         end
       end
 
       context 'when file exists' do
         it 'returns true' do
           within_fixture_path do
-            config.default_config_file?.should be_true
+            config.default_config_file?.should be true
           end
         end
       end
