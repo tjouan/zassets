@@ -119,7 +119,6 @@ module ZAssets
 
       it 'registers them with current config' do
         expect(config[:dummy_plugin]).to eq :registered
-        config = Config.new(plugins: ['dummy'])
       end
     end
 
@@ -128,7 +127,9 @@ module ZAssets
         config.instance_eval { @options[:foo] = :bar }
         expect(config[:foo]).to eq :bar
       end
+    end
 
+    describe '#[]=' do
       it 'stores a value under given key' do
         config[:foo] = :bar
         expect(config[:foo]).to eq :bar
