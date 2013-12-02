@@ -8,19 +8,19 @@ module ZAssets
     describe '#initialize' do
       context 'action arguments parsing' do
         it 'parses the action' do
-          cli.action.should == :serve
+          expect(cli.action).to eq :serve
         end
 
         context 'when action is not provided' do
           let(:args) { [] }
 
           it 'defaults to build' do
-            cli.action.should == :build
+            expect(cli.action).to eq :build
           end
         end
       end
 
-      context 'option arguments parsing ' do
+      context 'option arguments parsing' do
         def with_option(option, value = nil)
           if value
             CLI.new [option, value, *args]
@@ -30,23 +30,24 @@ module ZAssets
         end
 
         it 'parses the -v option' do
-          with_option('-v').options[:verbose].should be true
+          expect(with_option('-v').options[:verbose]).to be true
         end
 
         it 'parses the -c option' do
-          with_option('-c', 'config').options[:config_file].should == 'config'
+          expect(with_option('-c', 'config').options[:config_file])
+            .to eq 'config'
         end
 
         it 'parses the -o option' do
-          with_option('-o', '::0').options[:host].should == '::0'
+          expect(with_option('-o', '::0').options[:host]).to eq '::0'
         end
 
         it 'parses the -p option' do
-          with_option('-p', '9393').options[:port].should == '9393'
+          expect(with_option('-p', '9393').options[:port]).to eq '9393'
         end
 
         it 'parses the -s option' do
-          with_option('-s', 'thin').options[:server].should == 'thin'
+          expect(with_option('-s', 'thin').options[:server]).to eq 'thin'
         end
 
         context '-h option' do
@@ -59,11 +60,11 @@ module ZAssets
               cli
             rescue SystemExit
             end
-            output.string.should =~ /\AUsage: /
+            expect(output.string).to match /\AUsage: /
           end
 
           it 'exits' do
-            lambda { cli }.should raise_error SystemExit
+            expect { cli }.to raise_error SystemExit
           end
         end
 
@@ -77,11 +78,11 @@ module ZAssets
               cli
             rescue SystemExit
             end
-            output.string.chomp.should == VERSION
+            expect(output.string.chomp).to eq VERSION
           end
 
           it 'exits' do
-            lambda { cli }.should raise_error SystemExit
+            expect { cli }.to raise_error SystemExit
           end
         end
       end
@@ -89,20 +90,20 @@ module ZAssets
 
     describe '#action' do
       it 'return the current action' do
-        cli.action.should == args.last.to_sym
+        expect(cli.action).to eq args.last.to_sym
       end
     end
 
     describe '#config' do
       it 'builds a config' do
-        Config.should_receive(:new).with(cli.options)
+        expect(Config).to receive(:new).with(cli.options)
         cli.config
       end
 
       it 'returns the config' do
         config = double('config')
-        Config.stub(:new) { config }
-        cli.config.should == config
+        allow(Config).to receive(:new) { config }
+        expect(cli.config).to be config
       end
     end
 
@@ -110,8 +111,8 @@ module ZAssets
       context 'serve action' do
         it 'runs the server' do
           server = double('server')
-          cli.stub(:server) { server }
-          server.should_receive :run
+          allow(cli).to receive(:server) { server }
+          expect(server).to receive :run
           cli.run
         end
       end
@@ -121,8 +122,8 @@ module ZAssets
 
         it 'runs the builder' do
           builder = double('builder')
-          cli.stub(:builder) { builder }
-          builder.should_receive :build
+          allow(cli).to receive(:builder) { builder }
+          expect(builder).to receive :build
           cli.run
         end
       end
@@ -130,27 +131,27 @@ module ZAssets
 
     describe '#builder' do
       it 'builds a builder' do
-        Builder.should_receive(:new).with(cli.config)
+        expect(Builder).to receive(:new).with(cli.config)
         cli.builder
       end
 
       it 'returns the builder' do
         builder = double('builder')
-        Builder.stub(:new) { builder }
-        cli.builder.should == builder
+        allow(Builder).to receive(:new) { builder }
+        expect(cli.builder).to be builder
       end
     end
 
     describe '#server' do
       it 'builds a server' do
-        Server.should_receive(:new).with(cli.config)
+        expect(Server).to receive(:new).with(cli.config)
         cli.server
       end
 
       it 'returns the server' do
         server = double('server')
-        Server.stub(:new) { server }
-        cli.server.should == server
+        allow(Server).to receive(:new) { server }
+        expect(cli.server).to be server
       end
     end
   end

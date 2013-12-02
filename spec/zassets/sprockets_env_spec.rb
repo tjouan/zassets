@@ -7,14 +7,14 @@ module ZAssets
 
     describe 'working directory' do
       it 'initializes with current working directory' do
-        env.root.should == Dir.pwd
+        expect(env.root).to eq Dir.pwd
       end
     end
 
     describe 'logger level' do
       context 'by default' do
         it 'defaults to fatal' do
-          env.logger.level.should == Logger::FATAL
+          expect(env.logger.level).to eq Logger::FATAL
         end
       end
 
@@ -22,7 +22,7 @@ module ZAssets
         let(:config) { Config.new(verbose: true)}
 
         it 'is set to debug' do
-          env.logger.level.should == Logger::DEBUG
+          expect(env.logger.level).to eq Logger::DEBUG
         end
       end
     end
@@ -32,8 +32,8 @@ module ZAssets
       let(:config)  { Config.new(paths: paths) }
 
       it 'registers the configured search paths' do
-        env.paths.should include(File.join(env.root, paths[0]))
-        env.paths.should include(File.join(env.root, paths[1]))
+        expect(env.paths).to include File.join(env.root, paths[0])
+        expect(env.paths).to include File.join(env.root, paths[1])
       end
     end
   end

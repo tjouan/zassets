@@ -9,35 +9,35 @@ module ZAssets
       let(:handler) { double 'handler' }
 
       it 'runs the rack app' do
-        server.stub(:handler) { handler }
-        handler.should_receive(:run).with(server.app, server.options)
+        allow(server).to receive(:handler) { handler }
+        expect(handler).to receive(:run).with(server.app, server.options)
         server.run
       end
     end
 
     describe '#handler' do
       it 'returns the configured rack handler' do
-        server.handler.should == Rack::Handler::Puma
+        expect(server.handler).to eq Rack::Handler::Puma
       end
     end
 
     describe '#options' do
       it 'sets rack environment to development' do
-        server.options[:environment].should == :development
+        expect(server.options[:environment]).to eq :development
       end
 
       it 'sets rack handler host to configured host' do
-        server.options[:Host].should == config[:host]
+        expect(server.options[:Host]).to eq config[:host]
       end
 
       it 'sets rack handler port to configured port' do
-        server.options[:Port].should == config[:port]
+        expect(server.options[:Port]).to eq config[:port]
       end
     end
 
     describe '#app' do
       it 'returns a rack application' do
-        server.app.should respond_to(:call)
+        expect(server.app).to respond_to(:call)
       end
 
       it 'builds the rack app once' do
@@ -45,7 +45,7 @@ module ZAssets
         # built on each request. We dont want that so we need to either build
         # using Rack::Builder.app or call #to_app on the returned instance. We
         # can test if it was done by checking #to_app method absence.
-        server.app.should_not respond_to(:to_app)
+        expect(server.app).not_to respond_to(:to_app)
       end
 
       context 'Rack application' do
@@ -54,14 +54,14 @@ module ZAssets
         let(:app) { Rack::MockRequest.new(server.app) }
 
         it 'logs queries' do
-          app.get('/').errors.should =~ /GET \/.+404.+/
+          expect(app.get('/').errors).to match(/GET \/.+404.+/)
         end
 
         it 'shows exceptions' do
-          SprocketsEnv.any_instance.stub(:call) { raise RuntimeError }
+          allow_any_instance_of(SprocketsEnv).to receive(:call) { raise RuntimeError }
           response = app.get(config[:base_url])
-          response.should be_server_error
-          response.should =~ /RuntimeError/
+          expect(response).to be_server_error
+          expect(response).to match(/RuntimeError/)
         end
 
         context 'assets mount point' do
@@ -70,9 +70,9 @@ module ZAssets
           it 'maps the sprockets env' do
             within_fixture_path do
               response = app.get([config[:base_url], 'app.js'].join('/'))
-              response.should be_ok
-              response.content_type.should == 'application/javascript'
-              response.body.should == "console.log('hello!');\n"
+              expect(response).to be_ok
+              expect(response.content_type).to eq 'application/javascript'
+              expect(response.body).to eq "console.log('hello!');\n"
             end
           end
         end
@@ -81,9 +81,9 @@ module ZAssets
           it 'maps the static file handler' do
             within_fixture_path do
               response = app.get('/hello.txt')
-              response.should be_ok
-              response.content_type.should == 'text/plain'
-              response.body.should == "hello!\n"
+              expect(response).to be_ok
+              expect(response.content_type).to eq 'text/plain'
+              expect(response.body).to eq "hello!\n"
             end
           end
 
@@ -93,9 +93,9 @@ module ZAssets
             it 'serves the public file' do
               within_fixture_path do
                 response = app.get('/')
-                response.should be_ok
-                response.content_type.should == 'text/html'
-                response.body.should == "hello HTML!\n"
+                expect(response).to be_ok
+                expect(response.content_type).to eq 'text/html'
+                expect(response.body).to eq "hello HTML!\n"
               end
             end
           end
