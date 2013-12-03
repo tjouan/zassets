@@ -37,7 +37,7 @@ module ZAssets
 
     describe '#app' do
       it 'returns a rack application' do
-        expect(server.app).to respond_to(:call)
+        expect(server.app).to respond_to :call
       end
 
       it 'builds the rack app once' do
@@ -45,13 +45,15 @@ module ZAssets
         # built on each request. We dont want that so we need to either build
         # using Rack::Builder.app or call #to_app on the returned instance. We
         # can test if it was done by checking #to_app method absence.
-        expect(server.app).not_to respond_to(:to_app)
+        expect(server.app).not_to respond_to :to_app
       end
 
       context 'Rack application' do
         include FixturesHelpers
 
-        let(:app) { Rack::MockRequest.new(server.app) }
+        let(:app)       { Rack::MockRequest.new(server.app) }
+        let(:path)      { '/' }
+        let(:response)  { app.get path }
 
         it 'logs queries' do
           expect(app.get('/').errors).to match(/GET \/.+404.+/)
@@ -61,15 +63,15 @@ module ZAssets
           allow_any_instance_of(SprocketsEnv).to receive(:call) { raise RuntimeError }
           response = app.get(config[:base_url])
           expect(response).to be_server_error
-          expect(response).to match(/RuntimeError/)
+          expect(response).to match /RuntimeError/
         end
 
         context 'assets mount point' do
-          let(:config) { Config.new(paths: [fixture_path_for('assets')]) }
+          let(:path)    { [config[:base_url], 'app.js'].join '/' }
+          let(:config)  { Config.new(paths: [fixture_path_for('assets')]) }
 
           it 'maps the sprockets env' do
             within_fixture_path do
-              response = app.get([config[:base_url], 'app.js'].join('/'))
               expect(response).to be_ok
               expect(response.content_type).to eq 'application/javascript'
               expect(response.body).to eq "console.log('hello!');\n"
@@ -78,9 +80,10 @@ module ZAssets
         end
 
         context 'root mount point' do
+          let(:path) { '/hello.txt' }
+
           it 'maps the static file handler' do
             within_fixture_path do
-              response = app.get('/hello.txt')
               expect(response).to be_ok
               expect(response.content_type).to eq 'text/plain'
               expect(response.body).to eq "hello!\n"
