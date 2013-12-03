@@ -32,8 +32,12 @@ module ZAssets
       let(:config)  { Config.new(paths: paths) }
 
       it 'registers the configured search paths' do
-        expect(env.paths).to include File.join(env.root, paths[0])
-        expect(env.paths).to include File.join(env.root, paths[1])
+        # FIXME: We should not need to check against absolute paths (must never
+        # be needed or used).
+        expect(env.paths).to match_array [
+          File.join(env.root, paths[0]),
+          File.join(env.root, paths[1])
+        ]
       end
     end
   end
