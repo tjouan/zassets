@@ -39,11 +39,18 @@ module ZAssets
         end
 
         map '/' do
+          static_files = Rack::File.new config[:public_path]
+
           if config[:public_file]
-            file = File.new(File.join(config[:public_path], config[:public_file]))
-            run MemoryFile.new file
+            run Rack::Cascade.new([
+              static_files,
+              MemoryFile.new(File.new(File.join(
+                config[:public_path],
+                config[:public_file]
+              )))
+            ])
           else
-            run Rack::File.new config[:public_path]
+            run static_files
           end
         end
       end

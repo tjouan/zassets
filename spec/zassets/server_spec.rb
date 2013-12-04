@@ -56,14 +56,14 @@ module ZAssets
         let(:response)  { app.get path }
 
         it 'logs queries' do
-          expect(app.get('/').errors).to match(/GET \/.+404.+/)
+          expect(response.errors).to match(/GET \/.+404.+/)
         end
 
         it 'shows exceptions' do
           allow_any_instance_of(SprocketsEnv).to receive(:call) { raise RuntimeError }
           response = app.get(config[:base_url])
           expect(response).to be_server_error
-          expect(response).to match /RuntimeError/
+          expect(response.body).to match /RuntimeError/
         end
 
         context 'assets mount point' do
@@ -99,6 +99,13 @@ module ZAssets
                 expect(response).to be_ok
                 expect(response.content_type).to eq 'text/html'
                 expect(response.body).to eq "hello HTML!\n"
+              end
+            end
+
+            it 'serves static file' do
+              within_fixture_path do
+                response = app.get('/hello.txt')
+                expect(response.body).to eq "hello!\n"
               end
             end
           end
