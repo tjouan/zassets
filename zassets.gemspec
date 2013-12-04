@@ -6,9 +6,7 @@ Gem::Specification.new do |s|
   s.name        = 'zassets'
   s.version     = ZAssets::VERSION
   s.summary     = "zassets-#{ZAssets::VERSION}"
-  s.description = <<-eoh.gsub(/^ +/, '')
-    Standalone asset pipeline based on sprockets.
-  eoh
+  s.description = 'Assets server and builder'
   s.homepage    = 'https://rubygems.org/gems/zassets'
 
   s.author      = 'Thibault Jouan'
