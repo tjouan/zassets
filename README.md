@@ -283,9 +283,6 @@ TODO
 
 * Must warn/fail when a file listed in `build:` option is not built.
 
-* Serving static files and using `public_file:` catchall should work
-  together.
-
 * Implement compression for some assets kind when appropriate (JS,
   CSS).
   https://github.com/jcoglan/packr (compress javascript)
