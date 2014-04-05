@@ -335,6 +335,11 @@ Similar/related code
   frameworks, libraries, programming, stylesheet & templating
   languages and backend technology.
 
+* https://github.com/joliss/broccoli
+  A fast, reliable asset pipeline, supporting constant-time rebuilds
+  and compact build definitions. Comparable to the Rails asset
+  pipeline in scope, though it runs on Node and is backend-agnostic.
+
 ### Sprockets related
 
 * https://github.com/petebrowne/machined
