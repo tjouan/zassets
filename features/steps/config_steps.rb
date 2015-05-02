@@ -3,6 +3,6 @@ Given /^this config file:$/ do |config|
 end
 
 
-Then /^it should fail to parse the config$/ do
+Then /^it must fail to parse the config$/ do
   all_output.should =~ /yaml.+error/i
 end

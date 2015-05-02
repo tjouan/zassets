@@ -10,4 +10,4 @@ Feature: Manifest
       """
     And an empty file named "app/app.js"
     When I build
-    Then the manifest should include build path for "app.js"
+    Then the manifest must include build path for "app.js"

@@ -23,26 +23,26 @@ When /^I send the SIGINT signal$/ do
 end
 
 
-Then /^the server should stop successfully$/ do
+Then /^the server must stop successfully$/ do
   @_server.wait_stop.should == true
   @_server.exit_status.should == 0
 end
 
-Then /^the rack handler should be "([^"]*)"$/ do |handler|
+Then /^the rack handler must be "([^"]*)"$/ do |handler|
   @_server.stop
   output = @_server.stdout + @_server.stderr
   output.should match /#{handler}/i
 end
 
-Then /^the response status should be (\d+)$/ do |status|
+Then /^the response status must be (\d+)$/ do |status|
   @response.code.should == status.to_i
 end
 
-Then /^the body should be "([^"]*)"$/ do |body|
+Then /^the body must be "([^"]*)"$/ do |body|
   @response.body.should == body.gsub('\n', "\n")
 end
 
-Then /^the server output should match \/(.*)\/$/ do |pattern|
+Then /^the server output must match \/(.*)\/$/ do |pattern|
   @_server.stop
   output = @_server.stdout + @_server.stderr
   output.should =~ Regexp.compile(pattern)
