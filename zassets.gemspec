@@ -15,15 +15,15 @@ Gem::Specification.new do |s|
   s.executable  = 'zassets'
   s.extra_rdoc_files = %w[README.md]
 
-  s.add_dependency 'coffee-script', '~> 2.2.0'
-  s.add_dependency 'execjs',        '~> 2.0.2'
-  s.add_dependency 'puma',          '~> 2.6.0'
-  s.add_dependency 'sass',          '~> 3.2.10'
-  s.add_dependency 'sprockets',     '~> 2.10.0'
+  s.add_dependency 'coffee-script', '~> 2.2'
+  s.add_dependency 'execjs',        '~> 2.0'
+  s.add_dependency 'puma',          '~> 2.6'
+  s.add_dependency 'sass',          '~> 3.2'
+  s.add_dependency 'sprockets',     '~> 2.10'
 
-  s.add_development_dependency 'aruba',     '~> 0.5.3'
-  s.add_development_dependency 'cucumber',  '~> 1.3.10'
-  s.add_development_dependency 'httparty',  '~> 0.12.0'
+  s.add_development_dependency 'aruba',     '~> 0.5'
+  s.add_development_dependency 'cucumber',  '~> 1.3'
+  s.add_development_dependency 'httparty',  '~> 0.12'
   s.add_development_dependency 'rake'
   s.add_development_dependency 'rspec',     '~> 3.0.0.beta1'
 end
