@@ -1,6 +1,4 @@
-lib = File.expand_path('../lib', __FILE__)
-$LOAD_PATH << lib unless $LOAD_PATH.include? lib
-require 'zassets/version'
+require File.expand_path('../lib/zassets/version', __FILE__)
 
 Gem::Specification.new do |s|
   s.name        = 'zassets'
