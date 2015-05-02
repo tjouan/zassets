@@ -178,10 +178,10 @@ are provided by Sprockets, and its ecosystem can provide a lot more.
 zassets core will focus on CoffeeScript and Sass, but other engines
 are available as plugins:
 
-  * Haml Coffee
-  * Emblem.js
-  * Handlebars
-  * LESS (Sprockets LESS engine will handle @import rules by querying
+  * [Haml Coffee][]
+  * [Emblem.js][]
+  * [Handlebars][]
+  * [LESS][] (Sprockets LESS engine will handle @import rules by querying
     assets "logical path", not relative path as it would be the case
     in classic LESS stylesheets, the plugin implement some
     workarounds). See:
@@ -190,6 +190,11 @@ are available as plugins:
 
   More details in Sprockets README:
   https://github.com/sstephenson/sprockets#using-engines
+
+[Haml Coffee]:  https://rubygems.org/gems/zassets-plugins-haml_coffee
+[Emblem.js]:    https://rubygems.org/gems/zassets-plugins-emblem
+[Handlebars]:   https://rubygems.org/gems/zassets-plugins-handlebars
+[LESS]:         https://rubygems.org/gems/zassets-plugins-less
 
 
 JavaScript templating
