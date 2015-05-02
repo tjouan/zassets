@@ -24,26 +24,24 @@ end
 
 
 Then /^the server must stop successfully$/ do
-  @_server.wait_stop.should == true
-  @_server.exit_status.should == 0
+  expect(@_server.wait_stop).to be true
+  expect(@_server.exit_status).to eq 0
 end
 
 Then /^the rack handler must be "([^"]*)"$/ do |handler|
   @_server.stop
-  output = @_server.stdout + @_server.stderr
-  output.should match /#{handler}/i
+  expect(@_server.stdout + @_server.stderr).to match /#{handler}/i
 end
 
 Then /^the response status must be (\d+)$/ do |status|
-  @response.code.should == status.to_i
+  expect(@response.code).to eq status.to_i
 end
 
 Then /^the body must be "([^"]*)"$/ do |body|
-  @response.body.should == body.gsub('\n', "\n")
+  expect(@response.body).to eq body.gsub('\n', "\n")
 end
 
 Then /^the server output must match \/(.*)\/$/ do |pattern|
   @_server.stop
-  output = @_server.stdout + @_server.stderr
-  output.should =~ Regexp.compile(pattern)
+  expect(@_server.stdout + @_server.stderr).to match Regexp.compile(pattern)
 end

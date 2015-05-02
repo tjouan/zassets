@@ -5,32 +5,32 @@ end
 
 Then /^the built file "([^"]*)" must exist$/ do |path|
   prep_for_fs_check do
-    Dir[path].any?.should == true
+    expect(Dir[path].any?).to be true
   end
 end
 
 Then /^the built file "([^"]*)" must contain "([^"]*)"$/ do |path, content|
   prep_for_fs_check do
-    IO.read(Dir[path].first).should include(content)
+    expect(IO.read(Dir[path].first)).to include content
   end
 end
 
 Then /^the built file "([^"]*)" must match:/ do |path, content|
   regexp = Regexp.compile(content, Regexp::EXTENDED)
   prep_for_fs_check do
-    IO.read(Dir[path].first).should =~ regexp
+    expect(IO.read(Dir[path].first)).to match regexp
   end
 end
 
 Then /^the built file "([^"]*)" must match \/([^\/]*)\/$/ do |path, content|
   regexp = Regexp.compile(content)
   prep_for_fs_check do
-    IO.read(Dir[path].first).should =~ regexp
+    expect(IO.read(Dir[path].first)).to match regexp
   end
 end
 
 Then /^it must build$/ do
   prep_for_fs_check do
-    File.exist?('public/assets/manifest.json').should be_truthy
+    expect(File.exist?('public/assets/manifest.json')).to be true
   end
 end

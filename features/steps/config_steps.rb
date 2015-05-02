@@ -4,5 +4,5 @@ end
 
 
 Then /^it must fail to parse the config$/ do
-  all_output.should =~ /yaml.+error/i
+  expect(all_output).to match /yaml.+error/i
 end
