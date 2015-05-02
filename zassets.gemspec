@@ -22,7 +22,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'sprockets',     '~> 2.10'
 
   s.add_development_dependency 'aruba',     '~> 0.5'
-  s.add_development_dependency 'cucumber',  '~> 1.3'
+  s.add_development_dependency 'cucumber',  '~> 2.0'
   s.add_development_dependency 'httparty',  '~> 0.12'
   s.add_development_dependency 'rake'
   s.add_development_dependency 'rspec',     '~> 3.2'
