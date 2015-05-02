@@ -23,6 +23,7 @@ Getting started
 
     $ gem install zassets
 
+
 ### Application template following zassets conventions
 
   Create a basic application:
@@ -39,6 +40,7 @@ EOH
   `app` directory is the default load path, but this behavior is
 configurable. Any asset in the load path might be submitted to
 appropriate processors then served or built.
+
 
 ### Serving your application
 
@@ -57,6 +59,7 @@ $ curl http://localhost:9292/assets/hello.js | head -n 2
 (function() {
   console.log('hello from my app!');
 ```
+
 
 ### Building and packaging your application
 
@@ -81,6 +84,7 @@ $ head -n 2 public/assets/hello-3297995eead5225d053fb06facd15d3a.js
 all files listed in the `build:` configuration key into
 `public/assets` directory. A manifest in JSON format will also be
 written in `public/assets/manifest.json` file.
+
 
 ### Command line usage
 
@@ -124,6 +128,7 @@ will try to read a file named `config/zassets.yaml`.
   An additional specific configuration file can be specified with the
 `-c` argument, it will be loaded after an eventual
 `config/zassets.yaml` file.
+
 
 ### Extensive configuration file example with comments
 
