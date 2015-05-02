@@ -50,8 +50,7 @@ Puma 2.6.0 starting...            # Rack handler is configurable
 * Listening on tcp://::1:9292
 ```
 
-  Check it works in your browser (here in a new shell for
-documentation purpose).
+  Observe that CoffeeScript source is transpiled to JavaScript:
 
 ``` sh
 $ curl http://localhost:9292/assets/hello.js | head -n 2
@@ -83,14 +82,9 @@ all files listed in the `build:` configuration key into
 `public/assets` directory. A manifest in JSON format will also be
 written in `public/assets/manifest.json` file.
 
-### Command line usage help
+### Command line usage
 
-  You can override some configuration options using command line
-arguments, the complete list is printed on the standard output on
-`zassets --help`.
-
-``` sh
-$ zassets -h
+```
 Usage: zassets [options] [build|serve]
     -v, --verbose                    Enable verbose mode
     -c, --config FILE                Load default options from FILE
@@ -108,8 +102,10 @@ Internals overview
   Internally, zassets uses [Sprockets][] which provides most of the
 current features, along with [Rack][]. zassets server will mount both
 the Rack application provided by Sprockets and its own Rack
-application, mostly for features related to serving static files.
-Sprockets is also used fully when building assets, including
+application, used for logging, error reporting and serving static
+files.
+
+  Sprockets is again used when building assets, including
 "fingerprinting" the built assets (inserting a computed hash in the
 file name), which can be relied on to improve some HTTP caching
 behaviors.
@@ -323,35 +319,35 @@ Similar/related code
 
 ### With features for static sites
 
-* http://stasis.me/
+* http://stasis.me/    
   Stasis is a dynamic framework for static sites.
 
-* http://mimosa.io/
+* http://mimosa.io/    
   Loaded with what you need to start coding right away. Transpilers,
   Pre-Processors, Micro-templates, RequireJS, Bower, Testing and more.
 
-* http://brunch.io/
+* http://brunch.io/    
   Brunch is an assembler for HTML5 applications. It's agnostic to
   frameworks, libraries, programming, stylesheet & templating
   languages and backend technology.
 
-* https://github.com/joliss/broccoli
+* https://github.com/joliss/broccoli    
   A fast, reliable asset pipeline, supporting constant-time rebuilds
   and compact build definitions. Comparable to the Rails asset
   pipeline in scope, though it runs on Node and is backend-agnostic.
 
 ### Sprockets related
 
-* https://github.com/petebrowne/machined
+* https://github.com/petebrowne/machined    
   A static site generator and Rack server built using Sprockets 2.0
 
-* https://github.com/maccman/catapult
+* https://github.com/maccman/catapult    
   Simple gem that gives pure JavaScript/CoffeeScript projects a basic
   structure, and manages any necessary compilation and concatenation.
 
 ### Rack related
 
-* https://github.com/jlong/serve
+* https://github.com/jlong/serve    
   Serve is a small Rack-based web server that makes it easy to serve
   HTML, ERB, Haml, or a variety of template languages from any
   directory.
@@ -360,13 +356,13 @@ Similar/related code
 
 ### Rake related
 
-* https://github.com/mcollina/rake-minify
+* https://github.com/mcollina/rake-minify    
   Rake Minify is an extremely simple solution for minifying javascript
   and coffeescript files using a rake task.
 
 ### Rails related
 
-* http://documentcloud.github.io/jammit/
+* http://documentcloud.github.io/jammit/    
   Jammit is an industrial strength asset packaging library for Rails,
   providing both the CSS and JavaScript concatenation and compression
   that you'd expect, as well as YUI Compressor, Closure Compiler, and
@@ -374,25 +370,25 @@ Similar/related code
   template support, and optional Data-URI / MHTML image and font
   embedding.
 
-* https://github.com/d-i/half-pipe (ruby gem, uses nodejs/grunt)
+* https://github.com/d-i/half-pipe (ruby gem, uses nodejs/grunt)    
   Gem to replace the Rails asset pipeline with a Grunt.js-based
   workflow, providing dependencies via Bower.
 
 ### Sinatra related
 
-* https://github.com/rstacruz/sinatra-assetpack
+* https://github.com/rstacruz/sinatra-assetpack    
   The most convenient way to manage your assets in Sinatra.
 
 ### Building and/or packaging
 
-* http://winton.github.io/smart_asset/
+* http://winton.github.io/smart_asset/    
   Smart asset packaging for Rails, Sinatra, and Stasis
 
-* https://github.com/cjohansen/juicer
+* https://github.com/cjohansen/juicer    
   Juicer is a command line tool that helps you ship frontend code for
   production.
 
-* https://github.com/jcoglan/jake
+* https://github.com/jcoglan/jake    
   Jake is a command-line line tool for building JavaScript packages
   from source code. It’s basically a thin wrapper around Packr that
   lets you easily configure builds for multiple packages with
@@ -400,5 +396,5 @@ Similar/related code
 
 ### Miscellaneous
 
-* http://harpjs.com/
+* http://harpjs.com/    
   The static web server with built-in preprocessing.
