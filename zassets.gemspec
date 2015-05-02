@@ -12,7 +12,7 @@ Gem::Specification.new do |s|
   s.email       = 'tj@a13.fr'
 
   s.files       = `git ls-files lib`.split $/
-  s.executable  = 'scube'
+  s.executable  = 'zassets'
   s.extra_rdoc_files = %w[README.md]
 
   s.add_dependency 'coffee-script', '~> 2.2.0'
