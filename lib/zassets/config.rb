@@ -33,10 +33,7 @@ module ZAssets
 
     def load_options(filepath = DEFAULT_CONFIG_PATH)
       return {} unless options = YAML.load_file(filepath)
-      options.keys.each do |key|
-        options[(key.to_sym rescue key) || key] = options.delete(key)
-      end
-      options
+      symbolize_keys options
     end
 
     def default_config_file?
@@ -63,9 +60,25 @@ module ZAssets
 
     private
 
+    def symbolize_keys(hash)
+      case hash
+      when Hash
+        Hash[hash.map do |k, v|
+          [k.respond_to?(:to_sym) ? k.to_sym : k, symbolize_keys(v)]
+        end]
+      when Enumerable
+        hash.map { |v| symbolize_keys v }
+      else
+        hash
+      end
+    end
+
     def load_plugins!
       @options[:plugins].each do |plugin|
-        require "zassets-plugins-#{plugin}"
+        require 'zassets-plugins-%s' % case plugin
+          when Hash           then plugin[:name]
+          when Symbol, String then plugin
+        end
       end
 
       ::ZAssets.const_defined? :Plugins
