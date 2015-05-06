@@ -318,13 +318,13 @@ TODO
 Similar/related code
 --------------------
 
-* https://github.com/sstephenson/sprockets
+* https://github.com/sstephenson/sprockets    
   Sprockets: Rack-based asset packaging
 
-* http://rack.github.io/
+* http://rack.github.io/    
   Rack: a Ruby Webserver Interface
 
-* Sprockets contrib guide:
+* Sprockets contrib guide:    
   https://github.com/radar/guides/blob/56da5701c470442c3ab96a0005023117eae58777/sprockets.md
 
 ### With features for static sites
