@@ -2,41 +2,38 @@ require 'optparse'
 
 module ZAssets
   class CLI
-    ACTIONS = %w(build serve)
+    ACTIONS = %w[build serve].freeze
 
     attr_reader :options, :action
 
-    def initialize(args, stdout = $stdout)
+    def initialize args, stdout = $stdout
       @stdout = stdout
       @action = :build
       args_parse! args
     end
 
     def config
-      @config ||= Config.new @options
+      @config ||= Config.new(@options)
     end
 
     def run
       case @action
-      when :serve
-        server.run
-      when :build
-        builder.build
+        when :serve then server.run
+        when :build then builder.build
       end
     end
 
     def builder
-      @builder ||= Builder.new config
+      @builder ||= Builder.new(config)
     end
 
     def server
-      @server ||= Server.new config
+      @server ||= Server.new(config)
     end
 
+  private
 
-    private
-
-    def args_parse!(args)
+    def args_parse! args
       options = {}
       parser = OptionParser.new do |o|
         o.banner = "Usage: #{File.basename $0} [options] [build|serve]"

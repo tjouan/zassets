@@ -2,16 +2,16 @@ require 'sprockets'
 
 module ZAssets
   class Builder
-    MANIFEST_FILENAME = 'manifest.json'
+    MANIFEST_FILENAME = 'manifest.json'.freeze
 
     attr_writer :manifest
 
-    def initialize(config)
+    def initialize config
       @config = config
     end
 
     def build
-      manifest.compile(@config[:build])
+      manifest.compile @config[:build]
     end
 
     def manifest

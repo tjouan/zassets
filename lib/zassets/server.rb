@@ -2,13 +2,13 @@ require 'rack'
 
 module ZAssets
   class Server
-    def initialize(config)
+    def initialize config
       @config = config
     end
 
     def run
       handler.run app, options do |server|
-        [:INT, :TERM].each do |sig|
+        %i[INT TERM].each do |sig|
           trap(sig) { server.respond_to?(:stop!) ? server.stop! : server.stop }
         end
       end
@@ -39,7 +39,7 @@ module ZAssets
         end
 
         map '/' do
-          static_files = Rack::File.new config[:public_path]
+          static_files = Rack::File.new(config[:public_path])
 
           if config[:public_file]
             run Rack::Cascade.new([

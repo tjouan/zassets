@@ -1,6 +1,6 @@
 module ZAssets
   class MemoryFile
-    def initialize(file)
+    def initialize file
       @file = file
     end
 
@@ -15,7 +15,7 @@ module ZAssets
       @content ||= @file.read
     end
 
-    def call(env)
+    def call _env
       [200, headers, [body]]
     end
   end

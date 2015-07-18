@@ -2,7 +2,7 @@ require 'yaml'
 
 module ZAssets
   class Config
-    DEFAULT_CONFIG_PATH = 'config/zassets.yaml'
+    DEFAULT_CONFIG_PATH = 'config/zassets.yaml'.freeze
 
     DEFAULT_OPTIONS = {
       verbose:      false,
@@ -16,9 +16,9 @@ module ZAssets
       public_path:  'public',
       build_path:   'public/assets',
       build:        []
-    }
+    }.freeze
 
-    def initialize(options = {})
+    def initialize **options
       o = default_options
       o.merge! load_options if default_config_file?
       o.merge! load_options(options[:config_file]) if options[:config_file]
@@ -31,36 +31,34 @@ module ZAssets
       DEFAULT_OPTIONS.dup
     end
 
-    def load_options(filepath = DEFAULT_CONFIG_PATH)
+    def load_options filepath = DEFAULT_CONFIG_PATH
       return {} unless options = YAML.load_file(filepath)
       symbolize_keys options
     end
 
     def default_config_file?
-      File.exist? DEFAULT_CONFIG_PATH
+      File.exist?(DEFAULT_CONFIG_PATH)
     end
 
     def register_plugins!
       return unless load_plugins!
-
       ::ZAssets::Plugins.constants.each do |plugin_module_name|
         plugin_module = ::ZAssets::Plugins.const_get(plugin_module_name)
         plugin_module::Registrant.new(self).register
       end
     end
 
-    def [](key)
+    def [] key
       @options[key]
     end
 
-    def []=(key, value)
+    def []= key, value
       @options[key] = value
     end
 
+  private
 
-    private
-
-    def symbolize_keys(hash)
+    def symbolize_keys hash
       case hash
       when Hash
         Hash[hash.map do |k, v|
@@ -80,7 +78,6 @@ module ZAssets
           when Symbol, String then plugin
         end
       end
-
       ::ZAssets.const_defined? :Plugins
     end
   end

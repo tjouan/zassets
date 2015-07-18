@@ -1,3 +1,4 @@
 module ZAssets
-  class ArgumentError < ::ArgumentError; end
+  Error         = Class.new(StandardError)
+  ArgumentError = Class.new(Error)
 end
