@@ -1,4 +1,5 @@
 require 'coffee_script'
+require 'sass'
 
 require 'zassets/builder'
 require 'zassets/cli'
