@@ -1,7 +1,2 @@
-require 'aruba/api'
-require 'aruba/cucumber/hooks'
-require 'httparty'
-
-World(Aruba::Api)
-
-DEFAULT_CONFIG_PATH = 'config/zassets.yaml'
+require 'zassets/testing/cucumber'
+require 'zassets/testing/cucumber/server'
