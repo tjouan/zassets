@@ -51,8 +51,8 @@ module ZAssets
         expect(config.default_options[:port]).to eq 9292
       end
 
-      it 'sets server to puma' do
-        expect(config.default_options[:server]).to eq :puma
+      it 'sets server to nil' do
+        expect(config.default_options[:server]).to be nil
       end
 
       it 'sets base_url to /assets' do

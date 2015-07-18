@@ -17,7 +17,6 @@ Gem::Specification.new do |s|
 
   s.add_dependency 'coffee-script', '~> 2.2'
   s.add_dependency 'execjs',        '~> 2.0'
-  s.add_dependency 'puma',          '~> 2.6'
   s.add_dependency 'sass',          '~> 3.2'
   s.add_dependency 'sprockets',     '~> 2.10'
 
@@ -26,4 +25,5 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'httparty',  '~> 0.12'
   s.add_development_dependency 'rake',      '~> 10.4'
   s.add_development_dependency 'rspec',     '~> 3.2'
+  s.add_development_dependency 'unicorn',   '~> 4.9'
 end

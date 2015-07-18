@@ -147,7 +147,8 @@ plugins:
 host: localhost
 port: 8000
 
-# Change rack handler (HTTP server) to unicorn (default is puma).
+# Change rack handler (HTTP server) to unicorn (default behavior is to
+# try the following handlers in order: puma, unicorn, thin, webrick).
 server: unicorn
 
 # List of directories where assets will be searched for (load

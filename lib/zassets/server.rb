@@ -2,6 +2,8 @@ require 'rack'
 
 module ZAssets
   class Server
+    HANDLERS = %w[puma unicorn thin webrick].freeze
+
     def initialize config
       @config = config
     end
@@ -15,7 +17,7 @@ module ZAssets
     end
 
     def handler
-      Rack::Handler.get(@config[:server]) || Rack::Handler.default
+      Rack::Handler.get(@config[:server]) || Rack::Handler.pick(HANDLERS)
     end
 
     def options

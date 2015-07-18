@@ -17,7 +17,7 @@ module ZAssets
 
     describe '#handler' do
       it 'returns the configured rack handler' do
-        expect(server.handler).to eq Rack::Handler::Puma
+        expect(server.handler).to eq Rack::Handler::Unicorn
       end
     end
 

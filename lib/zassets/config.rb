@@ -8,7 +8,6 @@ module ZAssets
       verbose:      false,
       host:         '::1',
       port:         9292,
-      server:       :puma,
       plugins:      [],
       engines:      {},
       base_url:     '/assets',
