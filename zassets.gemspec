@@ -21,7 +21,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'sass',          '~> 3.2'
   s.add_dependency 'sprockets',     '~> 2.10'
 
-  s.add_development_dependency 'aruba',     '~> 0.5'
+  s.add_development_dependency 'aruba',     '~> 0.8'
   s.add_development_dependency 'cucumber',  '~> 2.0'
   s.add_development_dependency 'httparty',  '~> 0.12'
   s.add_development_dependency 'rake',      '~> 10.4'

@@ -1,12 +1,12 @@
 Given /^the server is running$/ do
   @_server ||= Server.new
-  in_current_dir { @_server.start }
+  cd('.') { @_server.start }
 end
 
 Given /^the server is running with this config:$/ do |config|
   write_file DEFAULT_CONFIG_PATH, config
   @_server = Server.new
-  in_current_dir { @_server.start }
+  cd('.') { @_server.start }
 end
 
 

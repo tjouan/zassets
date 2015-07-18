@@ -1,5 +1,5 @@
 Given /^a directory named "([^"]*)"$/ do |path|
-  create_dir path
+  create_directory path
 end
 
 Given /^a file named "([^"]*)" with "([^"]*)"$/ do |path, content|
