@@ -347,6 +347,11 @@ Similar/related code
   and compact build definitions. Comparable to the Rails asset
   pipeline in scope, though it runs on Node and is backend-agnostic.
 
+* http://www.flutterby.run/    
+  Flutterby is a flexible, Ruby-powered, routing graph-based web
+  application framework that will serve your website dynamically or
+  export it as a static site.
+
 ### Sprockets related
 
 * https://github.com/petebrowne/machined    
