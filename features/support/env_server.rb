@@ -1,5 +1,5 @@
 class Server
-  DEFAULT_COMMAND = 'zassets serve'
+  DEFAULT_COMMAND = '../../bin/zassets serve'
   DEFAULT_HOST    = 'localhost'
   DEFAULT_PORT    = 9292
 
