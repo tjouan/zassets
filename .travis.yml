@@ -41,6 +41,7 @@ install:
   - gem install -g ~/spec_deps.rb
 before_script:
   - export ZASSETSTEST_CI=yes
+  - export ZASSETSTEST_SERVER_HOST=127.0.0.1
   - export RUBYOPT=-I$(realpath lib)
 script:
   - rake
