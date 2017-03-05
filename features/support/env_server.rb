@@ -1,7 +1,7 @@
 class Server
-  DEFAULT_COMMAND = '../../bin/zassets serve'
-  DEFAULT_HOST    = 'localhost'
-  DEFAULT_PORT    = 9292
+  HOST    = ENV.fetch 'ZASSETSTEST_SERVER_HOST', 'localhost'
+  PORT    = 9292
+  COMMAND = "../../bin/zassets serve -o #{HOST}"
 
   attr_reader :exit_status
 
@@ -13,7 +13,7 @@ class Server
   end
 
   def uri_base
-    'http://%s:%d' % [DEFAULT_HOST, DEFAULT_PORT]
+    'http://%s:%d' % [HOST, PORT]
   end
 
   def uri_for_path(path)
@@ -47,14 +47,14 @@ class Server
       $stdout.reopen @w_out
       $stderr.reopen @w_err
 
-      exec DEFAULT_COMMAND
+      exec COMMAND
     end
 
     wait_ready
   end
 
   def wait_ready
-    TCPSocket.new DEFAULT_HOST, DEFAULT_PORT
+    TCPSocket.new HOST, PORT
   rescue Errno::ECONNREFUSED
     sleep 0.05
     retry
