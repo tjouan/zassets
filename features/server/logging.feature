@@ -4,4 +4,4 @@ Feature: Logging on standard output
   Scenario: logs requests on standard output
     Given the server is running
     When I request "/some_path"
-    Then the server output must match /::1.+GET\s+\/some_path\s+.*404/
+    Then the server output must match /GET\s+\/some_path\s+.*404/
